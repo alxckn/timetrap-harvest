@@ -9,6 +9,7 @@ class TimetrapHarvest::Formatter
   end
 
   def format
+    return { error: 'Entry not ended yet', note: entry[:note] } unless entry[:end]
     if alias_config
       { notes:      entry[:note],
         hours:      hours_for_time(entry[:start], entry[:end]),
